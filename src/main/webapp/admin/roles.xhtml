@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/templates/main.xhtml" >
+            <ui:define name="content">
+                <h:form id="roleForm">
+                    <h:dataTable value="#{roleGateway.findAll()}" var="role">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{role.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" >
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{role.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description"/>
+                            </f:facet>
+                            <h:outputText value="#{role.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Actions"/>
+                            </f:facet>
+                            <h:commandLink value="Edit" action="#{roleGateway.edit(role.id)}">
+                                <f:ajax render="@form" />
+                            </h:commandLink>
+                            <h:commandLink value="Delete" action="#{roleGateway.delete(role.id)}">
+                                <f:ajax render="@form" />
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+
+                    <h:commandButton id="addRoleButton" value="Add role" action="#{roleGateway.create()}" rendered="#{roleGateway.current eq null}">
+                        <f:ajax  execute="@this addRoles" render="@this addRoles" />
+                    </h:commandButton>  
+
+                    <h:panelGroup id="addRoles">
+                        <h:panelGrid id="addRolePanel"  columns="2" rendered="#{roleGateway.current ne null}">                            
+                            <h:outputLabel for="roleName" value="Name"/>
+                            <h:inputText id="roleName" value="#{roleGateway.current.name}"/>
+                            <h:outputLabel for="roleDesc" value="Description" />
+                            <h:inputText id="roleDesc" value="#{roleGateway.current.description}"/>
+                            <h:commandButton id="saveRoleButton" value="Save" action="#{roleGateway.save()}" >
+                                <f:ajax execute="@this" render="@form" />
+                            </h:commandButton>         
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition id="header">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <a class="navbar-brand">GradleWeb</a>
+                <h:form class="navbar-form navbar-right">
+                    <h:commandLink action="#{identity.redirectToGoogleAuthorization()}" value="Log Me In" rendered="#{identity.profile eq null}" />
+                    <h:panelGrid columns="3" rendered="#{identity.profile ne null}">
+                        <h:link outcome="/admin/index.xhtml" rendered="${identity.admin}" value="Admin"/>
+                        <h:link value="#{identity.profile.fullName}" outcome="/admin/index.xhtml"/>
+                        <h:graphicImage value="#{identity.profile.image}" height="40" width="40" />                                      
+                    </h:panelGrid>
+
+                </h:form>
+            </nav>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>This is the title of my web application.</h1>
+                    <p>Hello</p>
+                    <p>hello</p>
+                </div>
+            </div>
+
+        </ui:composition>
+    </body>
+</html>
