@@ -14,6 +14,7 @@ and open the template in the editor.
     <body>
         <ui:composition template="/WEB-INF/templates/main.xhtml" >
             <ui:define name="content">
+                <h:messages />
                 <h:form id="roleForm">
                     <h:dataTable value="#{roleGateway.findAll()}" var="role">
                         <h:column>
@@ -58,7 +59,7 @@ and open the template in the editor.
                             <h:outputLabel for="roleDesc" value="Description" />
                             <h:inputText id="roleDesc" value="#{roleGateway.current.description}"/>
                             <h:commandButton id="saveRoleButton" value="Save" action="#{roleGateway.save()}" >
-                                <f:ajax execute="@this" render="@form" />
+                                <f:ajax execute="@form" render="@form" />
                             </h:commandButton>         
                         </h:panelGrid>
                     </h:panelGroup>

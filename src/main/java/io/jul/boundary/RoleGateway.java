@@ -9,15 +9,14 @@ import io.jul.domain.Role;
 import java.util.List;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +25,7 @@ import javax.persistence.criteria.Root;
 @Named
 @Stateful
 @ConversationScoped
+@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class RoleGateway {
 
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
@@ -33,16 +33,14 @@ public class RoleGateway {
 
     private Role role;
 
-    public List<Role> findAll() {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Role> cq = cb.createQuery(Role.class);
-        Root<Role> root = cq.from(Role.class);
-        TypedQuery<Role> tq = entityManager.createQuery(cq);
+    public List<Role> findAll() {        
+        Query tq = entityManager.createQuery("select role from Role role", Role.class);
         return tq.getResultList();
     }
     
-    public void create(){
+    public void create(){        
         role = new Role();
+        entityManager.persist(role);
     }
 
     public void edit(Long id) {
@@ -57,22 +55,14 @@ public class RoleGateway {
         return role;
     }
 
-    @Remove
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void save() {
-        if (exists(role.getId())) {
-            entityManager.merge(role);
-        }else{
-            entityManager.persist(role);
-        }
-        role = null;
+       
     }
 
     private Role find(Long id){
         return entityManager.find(Role.class, id);
     }
-    private boolean exists(Long id) {
-        Role x = entityManager.find(Role.class, id);        
-        return x != null;                        
-    }
+    
 
 }
