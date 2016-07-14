@@ -59,7 +59,6 @@ and open the template in the editor.
                             <h:outputLabel for="roleDesc" value="Description" />
                             <h:inputText id="roleDesc" value="#{roleGateway.current.description}"/>
                             <h:commandButton id="saveRoleButton" value="Save" action="#{roleGateway.save()}" >
-                                <f:ajax execute="@form" render="@form" />
                             </h:commandButton>         
                         </h:panelGrid>
                     </h:panelGroup>

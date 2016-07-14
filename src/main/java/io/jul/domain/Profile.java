@@ -3,16 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.jul.boundary;
+package io.jul.domain;
 
 import javax.json.JsonObject;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author dieter
  */
+@Entity
 public class Profile {
-    
+    @Id
+    @GeneratedValue
     private Long id;
     private String userid;
     private String fullName;

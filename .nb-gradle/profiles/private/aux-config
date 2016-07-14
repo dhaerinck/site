@@ -5,18 +5,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/webapp/admin/roles.xhtml</file>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/java/io/jul/boundary/RoleGateway.java</file>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/webapp/admin/index.xhtml</file>
+        <file>file:/home/dieter/NetBeansProjects/site/src/main/java/io/jul/boundary/RoleGateway.java</file>
+        <file>file:/home/dieter/NetBeansProjects/site/src/main/java/io/jul/boundary/Gateway.java</file>
       </group>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/webapp/admin/roles.xhtml</file>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/java/io/jul/boundary/RoleGateway.java</file>
-        <file>file:/home/dieter/NetBeansProjects/GradleWeb/src/main/webapp/admin/index.xhtml</file>
-      </group>
-    </open-files>
   </auxiliary>
 </gradle-project-properties>

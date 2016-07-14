@@ -5,6 +5,7 @@
  */
 package io.jul.boundary;
 
+import io.jul.domain.Profile;
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuthRequest;

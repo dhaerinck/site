@@ -5,7 +5,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite/composite">
     <head>
         <title>User Info</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,8 +15,15 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/templates/main.xhtml" >
             <ui:define name="content" >
                 This is my website's current content.
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <h:outputText value="This is where the news will come:" />
+                        <composite:news name="News" data="#{newsGateway.findAll()}" numberOfPosts="10" />
+                        <composite:postNews gateway="#{newsGateway}" />
+                    </h:panelGrid>
+                </h:form>
             </ui:define>
         </ui:composition>
-        
+
     </body>
 </html>

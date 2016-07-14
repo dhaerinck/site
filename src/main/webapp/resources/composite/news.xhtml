@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <composite:interface>
+        <composite:attribute name="name"/>
+        <composite:attribute name="data"/>        
+        <composite:attribute name="numberOfPosts" />        
+    </composite:interface>
+    <composite:implementation>
+        <h:dataTable value="#{cc.attrs.data}" rows="#{cc.attrs.numberOfPosts}" var="post">
+            <f:facet name="header">
+                <h:outputText value="#{cc.attrs.name}" class="comp-news-header" />
+            </f:facet>
+            <h:column>
+                <h:panelGrid columns="1">
+                <h:outputText value="#{post.title}" class="comp-news-title"/>
+                <h:outputText value="#{post.content}" class="comp-news-content" />
+                <h:link outcome="user-profile" class="comp-news-user"  rendered="false"/>                
+                </h:panelGrid>
+            </h:column>                   
+        </h:dataTable>        
+    </composite:implementation>
+</html>
