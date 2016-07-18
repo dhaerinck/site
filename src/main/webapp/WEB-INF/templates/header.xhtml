@@ -19,7 +19,7 @@ and open the template in the editor.
                     <h:commandLink action="#{identity.redirectToGoogleAuthorization()}" value="Log Me In" rendered="#{identity.profile eq null}" />
                     <h:panelGrid columns="3" rendered="#{identity.profile ne null}">
                         <h:link outcome="/admin/index.xhtml" rendered="${identity.admin}" value="Admin"/>
-                        <h:link value="#{identity.profile.fullName}" outcome="/admin/index.xhtml"/>
+                        <h:link value="#{identity.profile.fullName}" outcome="/userdetails.xhtml"/>
                         <h:graphicImage value="#{identity.profile.image}" height="40" width="40" />                                      
                     </h:panelGrid>
 
@@ -27,9 +27,9 @@ and open the template in the editor.
             </nav>
             <div class="jumbotron">
                 <div class="container">
-                    <h1>This is the title of my web application.</h1>
-                    <p>Hello</p>
-                    <p>hello</p>
+                    <h1>SharpNet</h1>
+                    <p>This is a page dedicated to the development of Java EE applications. It's open source and available on GitHub as an example.</p>
+                    <p>You can use the techniques used in this simple project to simplify your own EE development.</p>
                 </div>
             </div>
 
